@@ -1,5 +1,16 @@
 from setuptools import setup, find_packages
 import os, io
+import pkg_resources
+
+def requestment():
+	packagex = []
+	for package in ['psutil', 'numpy', 'statistics']:
+		try:
+			dist = pkg_resources.get_distribution(package)
+			print('{} ({}) is installed'.format(dist.key, dist.version))
+		except pkg_resources.DistributionNotFound:
+			packagex.append(package)
+	return packagex
 
 def Find_Packages():
 	getdirectory = os.getcwd()
@@ -10,7 +21,7 @@ def Find_Packages():
 	else:
 		return find_packages()
  
-__VERSION_TOOLS = 1
+__VERSION_TOOLS = 1.2
 mails = 'LCFHERSHELL@TUTANOTA.COM'.lower()
 setup(
 	name="passwordtest",
@@ -18,6 +29,7 @@ setup(
 	description="Password security measurement tool",
 	author="alfiandecker2",
 	author_email=mails,
+	install_requires = requestment() or ['psutil', 'numpy', 'statistics'],
 	packages=Find_Packages(),
 	entry_points={
 			'console_scripts': [
