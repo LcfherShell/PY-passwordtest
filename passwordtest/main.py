@@ -265,17 +265,10 @@ class PasswordTest:
                     client.get(sitename)
 
                     endstart = time.perf_counter()
+                    return (start, endstart)
 
             except:
-
-                start = time.perf_counter()
-
-                with requests.get(sitename) as r:
-
-                    endstart = time.perf_counter()
-
-            return (start, endstart)
-
+                return (0, 0)
         return (0, 0)
 
     def calcul_online(self, y, x):
@@ -351,15 +344,15 @@ class PasswordTest:
 
         if not self.text:
 
-            self.textlist = self.textlist+self.stringlist['speciall']
+            self.textlist += self.stringlist['speciall']
 
         if self.text in self.stringlist['speciall']:
 
-            self.textlist = self.textlist+self.stringlist['speciall']
+            self.textlist += self.stringlist['speciall']
 
         if options == 'upper':
 
-            self.textlist = self.textlist+self.stringlist['upper']
+            self.textlist += self.stringlist['upper']
 
         try:
 
@@ -759,62 +752,50 @@ class PasswordTest:
     def mp__operations(self, i):
 
         switcher = {
-
-            '0': 0xc,  # 12
-
-            '1': 0xd,  # 13
-
-            '2': 0xe,  # 14
-
-            '3': 0xf,  # 15
-
-            '4': 0x10,  # 16
-
-            '5': 0x11,  # 17
-
-            '6': 0x12,  # 18
-
-            '7': 0x13,  # 19
-
-            '8': 0x14,  # 20
-
-            '9': 0x15,  # 21
-
-            'a': 0x6,  # 2, 1
-
-            'b': 0x7,
-
-            'c': 0x8,
-
-            'd': 0x9,
-
-            'e': 0x2,
-
-            'f': 0x7,  # 2, 1
-
-            'g': 0x9,
-
-            'h': 0x8,
-
-            'i': 0x9,
-
-            'j': 0x7,
-
-            'A': 0x12,
-
-            'B': 0xc,  # 18
-
-            'C': 0x15,  # 19
-
-            'D': 0x14,  # 20
-
-            'E': 0x15,  # 18
-
-            'F': 0x13,  # 19
-
-            'G': 0x14,  # 20
-
-        }
+        '0': 0xc,  # 12
+        '1': 0xd,  # 13
+        '2': 0xe,  # 14
+        '3': 0xf,  # 15
+        '4': 0x10,  # 16
+        '5': 0x11,  # 17
+        '6': 0x12,  # 18
+        '7': 0x13,  # 19
+        '8': 0x14,  # 20
+        '9': 0x15,  # 21
+        'a': 0x6,   # 2, 1
+        'b': 0x7,
+        'c': 0x8,
+        'd': 0x9,
+        'e': 0x2,
+        'f': 0x7,   # 2, 1
+        'g': 0x9,
+        'h': 0x8,
+        'i': 0x9,
+        'j': 0x7,
+        'A': 0x12,
+        'B': 0xc,   # 18
+        'C': 0x15,  # 19
+        'D': 0x14,  # 20
+        'E': 0x15,  # 18
+        'F': 0x13,  # 19
+        'G': 0x14,  # 20
+        # Added mapping for lowercase letters a-z
+        'k': 0xa,   # Additional mappings can be defined as per logic
+        'l': 0xb,
+        'm': 0x10,
+        'n': 0x11,
+        'o': 0x12,
+        'p': 0x13,
+        'q': 0x14,
+        'r': 0x15,
+        's': 0x2,
+        't': 0x3,
+        'u': 0x4,
+        'v': 0x5,
+        'w': 0x6,
+        'x': 0x7,
+        'y': 0x8,
+        'z': 0x9,}
 
         def argsp(s):
 
@@ -1055,149 +1036,6 @@ class PasswordTest:
 
         return self.active
 
-        # if options == 'binary-to-text':
-
-        #  "".join([chr(int(binary, 2)) for binary in text.split(" ")]) #binary 2 text
-
-        # elif options == 'text-to-binary':
-
-        #  " ".join(f"{ord(i):08b}" for i in text) #text 2 binary
-
-
-# class_text[0][3]>3               abcdfga
-
-
-# outh =  PasswordTest(active=True)
-
-# print("===========================Password Generator===========================")
-
-# while True:
-
-#    data = input('Password Test:>')
-
-#    for Length_later in outh.choice_langth:
-
-#        data = outh.password_map(text=data, lths=Length_later)
-
-#        output = outh.__time__(text=data)
-
-#        print("-----------------------------------------------------------------------")
-
-#        print("Password : ",data, "     | Length: ", Length_later)
-
-#        print("X Time: ",outh.Convert_Date(outh.Get_By_Time(text=data)))
-
-#        print("Y Time : ", outh.Convert_Date(output))
-
-    # create a 1st inner class
-
-     # class Inner:
-
-     #
-
-     #  def __init__(self):
-
-     #    # create a inner class of inner class object
-
-     #    self.innerclassofinner = self.Innerclassofinner()
-
-     #    self.innerclassofinner.text = 'New Text'
-
-     #  def show(self):
-
-     #   print(self.innerclassofinner.text)
-
-       # create a inner class of inner
-
-     #  class Innerclassofinner:
-
-     #     text = ''
-
-     #     def show(self):
-
-     #        print(self.text)
-
-     #        self.text = 'KKK'
-
-
-# create a outer class object
-
-# i.e.Geeksforgeeks class object
-
-# outer = Geeksforgeeks()
-
-# outer.show()
-
-# print()
-
-
-# create a inner class object
-
-# gfg1 = outer.inner
-
-# gfg1.show()
-
-# print()
-
-
-# create a inner class of inner class object
-
-# gfg2 = outer.inner.innerclassofinner
-
-# gfg2.show()
-
-
-# gfg1 = outer.inner
-
-# gfg1.show()
-
-
-# data =  input('password> ')
-
-# ob = Solution()
-
-# print(ob.strongPasswordChecker(data))
-
-
-# letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
-# numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-# symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
-
-# print("Welcome to the PyPassword Generator!")
-
-# nr_letters = int(input("How many letters would you like in your password?\n"))
-
-# nr_symbols = int(input(f"How many symbols would you like?\n"))
-
-# nr_numbers = int(input(f"How many numbers would you like?\n"))
-
-# password_list = []
-
-# for char in range(1, nr_letters + 1):
-
-#  password_list.append(random.choice(letters))
-
-# for char in range(1, nr_symbols + 1):
-
-#  password_list += random.choice(symbols)
-
-# for char in range(1, nr_numbers + 1):
-
-#  password_list += random.choice(numbers)
-
-
-# random.shuffle(password_list)
-
-# password = ""
-
-# for char in password_list:
-
-#  password += char
-
-# print(f"Your password is: {password}")
-
 class PasswordStrength(PasswordTest):
 
     def __dir__(self):
@@ -1326,6 +1164,6 @@ class PasswordStrength(PasswordTest):
         return callbackx
 
 
-Version = 1.3
+Version = 1.5
 
 __all__ = ["PasswordTest", "PasswordStrength", "Threadser", "Version"]
