@@ -134,9 +134,6 @@ class PasswordTest:
 
         super(PasswordTest, self).__init__()
 
-        # call sup class
-
-        # self.inner = self.Inner()
 
         self.active = active
 
@@ -254,27 +251,14 @@ class PasswordTest:
         if sitename and bool(self.active_sites[1].search(sitename)) == True or sitename and \
                 bool(self.active_sites[1].search(sitename.split("//")[0])) == True:
 
-            chunck, rowdata, start, endstart = [0, 0, 0, 0]
-
             try:
-
                 with requests.Client() as client:
-
                     start = time.perf_counter()
-
                     client.get(sitename)
-
                     endstart = time.perf_counter()
-
-            except:
-
-                start = time.perf_counter()
-
-                with requests.get(sitename) as r:
-
-                    endstart = time.perf_counter()
-
-            return (start, endstart)
+                    return (start, end)
+            except requests.RequestException:
+                return (0, 0)
 
         return (0, 0)
 
@@ -322,66 +306,40 @@ class PasswordTest:
 
             if resultx <= y:
 
-                # print(1) closed session 1
 
                 resultx = round((machst*notlive(False, 2)+y)/.2)/6
 
             if resultx <= y:
-                # print(1, 33)
                 resultx = resultx*1.45
 
             if resultx <= y:
-                # print(2, 33)
                 resultx = resultx*resultx
 
             return resultx
 
-        # print(3)# closed session 3
         if round(result, 2)/1.8 <= y:
-            # print(3.1)
             result = result*(result/6)
 
         return round(result, 2)/1.8
 
-    def generate_password(self, text='', Length=0, options=None):
-
+    def generate_password(self, text='', length=0, options=None):
         self.text = text
-
-        self.textlist = self.stringlist['lower']+self.stringlist['digits']
+        self.textlist = self.stringlist['lower'] + self.stringlist['digits']
 
         if not self.text:
+            self.textlist += self.stringlist['special']
 
-            self.textlist = self.textlist+self.stringlist['speciall']
-
-        if self.text in self.stringlist['speciall']:
-
-            self.textlist = self.textlist+self.stringlist['speciall']
+        if self.text in self.stringlist['special']:
+            self.textlist += self.stringlist['special']
 
         if options == 'upper':
+            self.textlist += self.stringlist['upper']
 
-            self.textlist = self.textlist+self.stringlist['upper']
+        # Use a more efficient way to get length
+        if length <= 0:
+            length = random.choice(self.choice_length[:2])
 
-        try:
-
-            if int(Length) > 0x4:
-
-                Lengths = Length
-
-            elif Lengths < 1:
-
-                raise Exception("Sorry, no numbers below zero")
-
-            else:
-
-                raise TypeError("Only integers are allowed")
-
-        except:
-
-            Length = self.choice_langth[:2]
-
-            Lengths = int((random.choice(Length)/2)+0x4)
-
-        return ''.join(random.choice(self.textlist) for _ in range(Lengths))
+        return ''.join(random.choice(self.textlist) for _ in range(length))
 
     def password_map(self, text, lths=False):
 
@@ -396,8 +354,6 @@ class PasswordTest:
             if lths > 7:
 
                 self.Length = lths
-
-        # =================================================
 
         get_Length_fisrt = len(self.second_text)
 
@@ -616,16 +572,6 @@ class PasswordTest:
 
             return speciall_buff
 
-        # if not text:
-
-        #  return (0, 0)
-
-        # if len(text)==8:
-
-         # self.times = 45
-
-        # elif 8*.25 = 2
-
         specials_sums = Get_By_Time(self, text=text)
 
         chuck_times_x = self.medium_chuck
@@ -649,26 +595,6 @@ class PasswordTest:
         digits_chunck_time_ = digits_(self)
 
         specials_chunck_time_ = specials_(self)
-
-        # if not text.islower() and not text.isupper() and  self.class_text[0][3]>3:
-
-        # specll_chuck = chuck_times_y*len(str(text))+((text_chunck_time_+digits_chunck_time_)*2.2)+(specials_chunck_time_+len(str(text)))/2
-
-        # elif text.islower() and not text.isupper() or text.isupper() and not text.islower():
-
-        #    print(1)
-
-        #    specll_chuck = chuck_times_y*len(str(text))+(self.medium_chuck+len(str(text))**8)
-
-        # else:
-
-        #    print(2)
-
-        #    specll_chuck = chuck_times_y*len(str(text))+((text_chunck_time_+digits_chunck_time_)*1.3)+(specials_chunck_time_+len(str(text)))/2
-
-        #
-
-        # Ambil list, extract, lalu cocokan sesuai book > convert ke hex dan juamlahkan semua listnya Mean
 
         if text.islower() == True and not text.isupper() and self.class_text[0][3] < 1 \
                 or text.isupper() == True and not text.islower() and self.class_text[0][3] < 1:
@@ -759,61 +685,50 @@ class PasswordTest:
     def mp__operations(self, i):
 
         switcher = {
-
-            '0': 0xc,  # 12
-
-            '1': 0xd,  # 13
-
-            '2': 0xe,  # 14
-
-            '3': 0xf,  # 15
-
-            '4': 0x10,  # 16
-
-            '5': 0x11,  # 17
-
-            '6': 0x12,  # 18
-
-            '7': 0x13,  # 19
-
-            '8': 0x14,  # 20
-
-            '9': 0x15,  # 21
-
-            'a': 0x6,  # 2, 1
-
-            'b': 0x7,
-
-            'c': 0x8,
-
-            'd': 0x9,
-
-            'e': 0x2,
-
-            'f': 0x7,  # 2, 1
-
-            'g': 0x9,
-
-            'h': 0x8,
-
-            'i': 0x9,
-
-            'j': 0x7,
-
-            'A': 0x12,
-
-            'B': 0xc,  # 18
-
-            'C': 0x15,  # 19
-
-            'D': 0x14,  # 20
-
-            'E': 0x15,  # 18
-
-            'F': 0x13,  # 19
-
-            'G': 0x14,  # 20
-
+        '0': 0xc,  # 12
+        '1': 0xd,  # 13
+        '2': 0xe,  # 14
+        '3': 0xf,  # 15
+        '4': 0x10,  # 16
+        '5': 0x11,  # 17
+        '6': 0x12,  # 18
+        '7': 0x13,  # 19
+        '8': 0x14,  # 20
+        '9': 0x15,  # 21
+        'a': 0x6,   # 2, 1
+        'b': 0x7,
+        'c': 0x8,
+        'd': 0x9,
+        'e': 0x2,
+        'f': 0x7,   # 2, 1
+        'g': 0x9,
+        'h': 0x8,
+        'i': 0x9,
+        'j': 0x7,
+        'A': 0x12,
+        'B': 0xc,   # 18
+        'C': 0x15,  # 19
+        'D': 0x14,  # 20
+        'E': 0x15,  # 18
+        'F': 0x13,  # 19
+        'G': 0x14,  # 20
+        # Added mapping for lowercase letters a-z
+        'k': 0xa,   # Additional mappings can be defined as per logic
+        'l': 0xb,
+        'm': 0x10,
+        'n': 0x11,
+        'o': 0x12,
+        'p': 0x13,
+        'q': 0x14,
+        'r': 0x15,
+        's': 0x2,
+        't': 0x3,
+        'u': 0x4,
+        'v': 0x5,
+        'w': 0x6,
+        'x': 0x7,
+        'y': 0x8,
+        'z': 0x9,
         }
 
         def argsp(s):
