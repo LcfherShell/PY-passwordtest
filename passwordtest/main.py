@@ -351,15 +351,15 @@ class PasswordTest:
 
         if not self.text:
 
-            self.textlist = self.textlist+self.stringlist['speciall']
+            self.textlist += self.stringlist['speciall']
 
         if self.text in self.stringlist['speciall']:
 
-            self.textlist = self.textlist+self.stringlist['speciall']
+            self.textlist += self.stringlist['speciall']
 
         if options == 'upper':
 
-            self.textlist = self.textlist+self.stringlist['upper']
+            self.textlist += self.stringlist['upper']
 
         try:
 
@@ -759,61 +759,50 @@ class PasswordTest:
     def mp__operations(self, i):
 
         switcher = {
-
-            '0': 0xc,  # 12
-
-            '1': 0xd,  # 13
-
-            '2': 0xe,  # 14
-
-            '3': 0xf,  # 15
-
-            '4': 0x10,  # 16
-
-            '5': 0x11,  # 17
-
-            '6': 0x12,  # 18
-
-            '7': 0x13,  # 19
-
-            '8': 0x14,  # 20
-
-            '9': 0x15,  # 21
-
-            'a': 0x6,  # 2, 1
-
-            'b': 0x7,
-
-            'c': 0x8,
-
-            'd': 0x9,
-
-            'e': 0x2,
-
-            'f': 0x7,  # 2, 1
-
-            'g': 0x9,
-
-            'h': 0x8,
-
-            'i': 0x9,
-
-            'j': 0x7,
-
-            'A': 0x12,
-
-            'B': 0xc,  # 18
-
-            'C': 0x15,  # 19
-
-            'D': 0x14,  # 20
-
-            'E': 0x15,  # 18
-
-            'F': 0x13,  # 19
-
-            'G': 0x14,  # 20
-
+        '0': 0xc,  # 12
+        '1': 0xd,  # 13
+        '2': 0xe,  # 14
+        '3': 0xf,  # 15
+        '4': 0x10,  # 16
+        '5': 0x11,  # 17
+        '6': 0x12,  # 18
+        '7': 0x13,  # 19
+        '8': 0x14,  # 20
+        '9': 0x15,  # 21
+        'a': 0x6,   # 2, 1
+        'b': 0x7,
+        'c': 0x8,
+        'd': 0x9,
+        'e': 0x2,
+        'f': 0x7,   # 2, 1
+        'g': 0x9,
+        'h': 0x8,
+        'i': 0x9,
+        'j': 0x7,
+        'A': 0x12,
+        'B': 0xc,   # 18
+        'C': 0x15,  # 19
+        'D': 0x14,  # 20
+        'E': 0x15,  # 18
+        'F': 0x13,  # 19
+        'G': 0x14,  # 20
+        # Added mapping for lowercase letters a-z
+        'k': 0xa,   # Additional mappings can be defined as per logic
+        'l': 0xb,
+        'm': 0x10,
+        'n': 0x11,
+        'o': 0x12,
+        'p': 0x13,
+        'q': 0x14,
+        'r': 0x15,
+        's': 0x2,
+        't': 0x3,
+        'u': 0x4,
+        'v': 0x5,
+        'w': 0x6,
+        'x': 0x7,
+        'y': 0x8,
+        'z': 0x9,
         }
 
         def argsp(s):
